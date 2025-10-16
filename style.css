@@ -41,7 +41,7 @@
 }
 .links ul li:hover{
       transform: translate(-5px);
-    background-color: orangered;
+    background-color: #A8A8A8;
      transition:0.3s ease-in-out;
      text-decoration: underline;
 }
@@ -166,7 +166,7 @@ table {
 }
 .infor{
     padding: 20px;
-    
+
     justify-content: center;
     align-items: center;
 }
@@ -175,14 +175,15 @@ table {
        box-shadow: 0 10px 8px rgba(0, 0, 0, 0.5);
        flex-wrap: wrap;
 }
+/* REVERTED: input styles back to the original provided */
 .infor input {
     outline: none;
     margin-top:;
     justify-content: center;
     align-items: center;
        background-color: rgb(248, 239, 239);
-    color: #f8f8f8
-    display: flex;
+    color: #f8f8f8; /* This is the style that makes text hard to see/start in the middle */
+    display: flex; /* This is the style that makes text hard to see/start in the middle */
     /* width: 100%; */
     /* margin: 10px 0; */
     padding: 12px;
@@ -238,14 +239,17 @@ table {
     width: 40px;
     flex-wrap: wrap;
 }
-.top{
-    position: sticky;
-    margin-left: 1790px;
-    flex-wrap: wrap;
-    transition: 0.3s;
-    /* margin-bottom: 400px; */
 
+/* *** FIX: Stick 'Back to Top' button to the bottom right on desktop and mobile *** */
+.top{
+    position: fixed; /* Use fixed positioning */
+    bottom: 30px; /* Position from the bottom */
+    right: 30px; /* Position from the right */
+    margin-left: 0; /* Clear previous margin-left */
+    transition: 0.3s;
+    z-index: 1000; /* Ensure it stays on top */
 }
+
 .top:hover{
     /* transform: translate(5px); */
 }
@@ -255,4 +259,118 @@ table{
 #trow{
     background-color: chocolate;
     color: #f8f8f8;
+}
+
+/* --- Mobile View Fixes (Max Width: 768px) --- */
+@media (max-width: 768px) {
+    /* Adjust Header/Navigation to stack better */
+    .contanier {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .links ul {
+        gap: 20px; /* Reduce gap between links */
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .links ul li {
+        padding: 10px 5px; /* Reduce link padding */
+    }
+
+    /* Adjust the main "web" section */
+    .web-contanier {
+        display: flex;
+        justify-content: center;
+    }
+
+    .web {
+        padding: 30px;
+        text-align: center;
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .web-contanier img {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    /* Make the card section stack vertically */
+    .fix {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .card {
+        width: 80%;
+        max-width: 300px;
+        margin: 10px 0;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust the table for better mobile display */
+    table {
+        font-size: small;
+        margin-top: 30px;
+        border-collapse: collapse;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 95%;
+        margin-left: 2.5%;
+    }
+
+    table th, table td {
+        padding: 10px 5px;
+    }
+
+    /* Adjust contact section padding */
+    .contact {
+        padding: 30px 10px;
+        text-align: center;
+    }
+
+    /* Adjust form section */
+    .infor {
+        width: 90%;
+        margin: 20px auto;
+        padding: 30px 15px;
+        text-align: center;
+    }
+
+    .infor input {
+        width: 90%; /* Make inputs nearly full width */
+        margin-bottom: 15px;
+        /* Reverted: Removed margin: 10px auto; padding-left: 20px; */
+    }
+
+    .infor button {
+        width: 50%;
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    .xxx{
+        width: 90%;
+        /* Reverted: Removed margin: 10px auto; padding-left: 20px; */
+    }
+
+    /* The .top fix is consistent for mobile as well */
+    .top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        margin-left: auto;
+        top: auto;
+    }
 }
